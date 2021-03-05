@@ -12,7 +12,7 @@ map.on('style.load', function () {
   //add geojson source, this can be pulled from mapboxgl//
   map.addSource('mncd3', {
     type: 'geojson',
-    data: '/data/mncd3.geojson'
+    data: 'data/mncd3.geojson'
   });
 //test out an extrude//
 // map.addLayer({
