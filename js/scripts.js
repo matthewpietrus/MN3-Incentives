@@ -12,9 +12,17 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkd
     pitch: 3,
 });
 
+//add mapbox geocoder//
+map.addControl(
+  new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+  })
+);
+
 map.on('style.load', function () {
   //add geojson source, this can be pulled from mapboxgl//
-  map.addSource('mncd3', {
+  map.addSource('mncd3var', {
     type: 'geojson',
     data: 'data/mncd3var.geojson'
   });
@@ -22,10 +30,11 @@ map.on('style.load', function () {
   map.addLayer({
     'id': 'mncd3-fill',
     'type': 'fill',
-    'source': 'mncd3',
+    'source': 'mncd3var',
     'layout': {},
     'paint': {
         'fill-color': [
+          'interpolate',
           ['linear'],
           ['get', 'PerBuilt'],
           0,
