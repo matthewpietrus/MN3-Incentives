@@ -1,3 +1,7 @@
+function togglesidebar() {
+  document.getElementById('property-details').classList.toggle('active');
+}
+
 mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkdzMzbnZ5NGh5dDM1eiJ9.wcy3gfH3AUsHi7Xzs58xPA';
 
   var map = new mapboxgl.Map({
@@ -12,30 +16,9 @@ map.on('style.load', function () {
   //add geojson source, this can be pulled from mapboxgl//
   map.addSource('mncd3', {
     type: 'geojson',
-    data: 'data/mncd3.geojson'
+    data: 'data/mncd3var.geojson'
   });
-//test out an extrude//
-// map.addLayer({
-//           'id': 'building-extrude',
-//           'type': 'fill-extrusion',
-//           'source': 'mncd3',
-//           'paint': {
-//               // See the Mapbox Style Specification for details on data expressions.
-//               // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions
-//
-//               // Get the fill-extrusion-color from the source 'color' property.
-//               'fill-extrusion-color': ['get', 'color'],
-//
-//               // Get fill-extrusion-height from the source 'height' property.
-//               'fill-extrusion-height': ['get', 'PerBuilt'],
-//
-//               // Get fill-extrusion-base from the source 'base_height' property.
-//               'fill-extrusion-base': ['get', 'PerBuilt'],
-//
-//               // Make extrusions slightly opaque for see through indoor walls.
-//               'fill-extrusion-opacity': 0.5
 
-  //add a layer to style source//
   map.addLayer({
     'id': 'mncd3-fill',
     'type': 'fill',
@@ -43,7 +26,6 @@ map.on('style.load', function () {
     'layout': {},
     'paint': {
         'fill-color': [
-          'interpolate',
           ['linear'],
           ['get', 'PerBuilt'],
           0,
@@ -60,7 +42,7 @@ map.on('style.load', function () {
           '#ff0000',
         ],
         'fill-opacity': 0.70
-      }
+      },
     });
 })
 // Create a popup, but don't add it to the map yet.
@@ -82,10 +64,11 @@ map.on('mousemove', function (e) {
     var location = feature.properties.Block
     var perbuilt = feature.properties.PerBuilt*100
 
-
     popup.setLngLat(e.lngLat).setHTML(perbuilt).addTo(map);
   }
   else {
     popup.remove();
   }
 })
+
+//Display property details on feature click, move sidebar.

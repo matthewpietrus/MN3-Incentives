@@ -5,15 +5,75 @@
 <head>
   <meta charset="utf-8">
   <title>MN CD3</title>
+  <!-- Bootstrap styling -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
 </head>
 
 <body>
-  <div class='container'>
+  <!-- About Modal -->
+  <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="aboutModalLabel">About the Data</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>This data employs an experimental linear probability model that attempts
+          to predict how likely a lot is to develop based on several variables.
+          The dependent variable in the model is a boolean where sites that have
+          received a new building or demolition permit receive a value of 1, and
+          those that have not, a value of 0.
+          <br></br>
+          The independent variables in the model fall into three categories:
+          <br></br>
+          1) <b>Lot Characteristics</b> (e.g. lot size/width/depth, size of existing buildings,
+          existing land use, distance to subway, location in floodzone, etc.)
+          <br></br>
+          2) <b>Economic Factors</b> (e.g. median asking rent, average condo sales price)
+          <br></br>
+          3) <b>Regulatory Frameworks</b> (e.g. landmark status, available tax incentives,
+          parking requirements, max allowable floor area ratio (FAR), rent stabilized
+          units, etc.)
+          <br></br>
+          For each lot, whether or not a lot has developed is regressed with these
+          variables. Data for the lot is taken in 2010 and 2015, and permit data is
+          used for 2010-2014 and 2015-2020, respectively. The likelihood of Development
+          is then calculated for each lot using the coefficients derived from this model.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- add navigation bar -->
+<nav id='navbar' class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <h1><b>Development Potential</b></h1>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <!-- Button trigger modal -->
+          <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About this Data<i class="fas fa-info-circle" ></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <div class='main-container'>
     <div id='sidebar'>
-      <h1> Development Potential & Site Due Diligence</h1>
       <p> This map divides the amount the Floor Area Ratio (FAR) built as a percent of the maximum allowed FAR.
           Generally, sites that are substantially 'underbuilt', or built to less than what zoning allows,
           are more likely result in new construction.</p>
@@ -24,34 +84,41 @@
       <h2> Percent Built</h2>
       <h3> Built FAR/Max FAR</h3>
         <div id="legend1">
-          <div><span style="background-color: #edf8fb"></span>0-25%</div>
-          <div><span style="background-color: #b3cde3"></span>25-50%</div>
-          <div><span style="background-color: #8c96c6"></span>50-75%</div>
-          <div><span style="background-color: #8856a7"></span>75-100%</div>
-          <div><span style="background-color: #810f7c"></span>100-200%</div>
-          <div><span style="background-color: #ff0000"></span>More than 200%</div>
-          <div><span style="background-color: #252525"></span>Park</div>
+          <div><span style="background-color: #edf8fb; margin-left: 10px"></span>0-25%</div>
+          <div><span style="background-color: #b3cde3; margin-left: 10px"></span>25-50%</div>
+          <div><span style="background-color: #8c96c6; margin-left: 10px"></span>50-75%</div>
+          <div><span style="background-color: #8856a7; margin-left: 10px"></span>75-100%</div>
+          <div><span style="background-color: #810f7c; margin-left: 10px"></span>100-200%</div>
+          <div><span style="background-color: #ff0000; margin-left: 10px"></span>More than 200%</div>
+          <div><span style="background-color: #252525; margin-left: 10px"></span>Park</div>
         </div>
       <h4>
         Source: Map PLUTO 2020 v8 - <a target="_blank"
-                  href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" >NYC Department of City Planning.</a>
+        href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" >NYC Department of City Planning.</a>
       </h4>
-    </div>
+
+      <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Toggle Sidebar</button>
+        </div>
+          <div id='property-details'>
+            <h1>PROPERTY DETAILS</h1>
+            <p>This is a test of information test tes tes asldkjf asdflkj </p>
+            <div class="sidebar-footer">
+              <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Close</button>
+            </div>
+          </div>
+
+<!-- \\bring in bootstrap\\ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <div id='mapcontainer'>MAP</div>
-  </div>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-  </div>
+      </div>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+      </div>
 
-
-<!-- \\Add source data that opens in a different tab using target="_blank" -->
-<footer> Source: Map PLUTO 2020 v8 - NYC Department of City Planning, via <a target="_blank"
-          href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" >NYC Open Data.</a>
-</footer>
 </body>
 
 </html>
