@@ -37,17 +37,17 @@ map.on('style.load', function () {
           'interpolate',
           ['linear'],
           ['get', 'likelihood'],
-          0,
+          -0.9,
           '#edf8fb',
-          0.25,
+          0,
           '#b3cde3',
-          0.50,
+          0.05,
           '#8c96c6',
-          0.75,
+          0.075,
           '#8856a7',
-          1,
+          0.1,
           '#810f7c',
-          2,
+          0.4,
           '#ff0000',
         ],
         'fill-opacity': 0.70
@@ -70,8 +70,8 @@ map.on('mousemove', function (e) {
     // Populate the popup and set its coordinates
     // based on the feature found.
     var feature = features[0]
-    var location = feature.properties.Block
-    var perbuilt = feature.properties.PerBuilt*100
+    var location = feature.properties.Address
+    var perbuilt = feature.properties.likelihood*100
 
     popup.setLngLat(e.lngLat).setHTML(perbuilt).addTo(map);
   }
