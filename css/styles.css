@@ -39,7 +39,6 @@ body {
 position: fixed;
   background: darkgray;
   width: 320px;
-  height: 100%;
   left: -320px;
   transition: all 250ms linear;
 }
