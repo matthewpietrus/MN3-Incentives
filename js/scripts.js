@@ -36,7 +36,7 @@ map.on('style.load', function () {
         'fill-color': [
           'interpolate',
           ['linear'],
-          ['get', 'PerBuilt'],
+          ['get', 'likelihood'],
           0,
           '#edf8fb',
           0.25,
