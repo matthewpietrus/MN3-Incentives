@@ -55,7 +55,7 @@ map.on('style.load', function () {
         ],
         'fill-opacity': 0.70
       },
-    });
+    }, 'waterway-label');
 })
 
 // when the user hovers over our nyc-cd layer make the mouse cursor a pointer
