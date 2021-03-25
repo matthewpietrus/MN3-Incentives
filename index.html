@@ -85,19 +85,27 @@
       <p> Use this tool to understand the available incentives and potential
           regulatory hurdles associated with development of a parcel of land. </p>
 
-      <h2> Likelihood of Development</h2>
-        <div id="legend1">
-          <div><span style="background-color: #edf8fb; margin-left: 10px"></span>Very Unlikely</div>
-          <div><span style="background-color: #b3cde3; margin-left: 10px"></span>Unlikely</div>
-          <div><span style="background-color: #8c96c6; margin-left: 10px"></span>Slightly Likely</div>
-          <div><span style="background-color: #8856a7; margin-left: 10px"></span>Likely</div>
-          <div><span style="background-color: #810f7c; margin-left: 10px"></span>Very Likely</div>
-          <div><span style="background-color: #ff0000; margin-left: 10px"></span>Extremely Likely</div>
-        </div>
       <h4>
         Source: Map PLUTO 2020 v8 - <a target="_blank"
         href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" >NYC Department of City Planning.</a>
       </h4>
+
+      <div class='legend-head'>
+        <b>Likelihood of Development </b>
+      </div>
+          <div class="color-code">
+            <div class="colors" id="c1"></div>
+          </div>
+            <div class="color-container">
+            <div>Less Likely</div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div>More Likely</div>
+          </div>
 
       <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Lot Info</button>
 
@@ -108,8 +116,9 @@
     <div id='property-details'>
       <div class='info-container' style="margin-left: 10px">
         <h2>Click on a lot to learn more</h2>
+        <b><div class='add' style="font-size:18px" style="margin-bottom: 15px"> </div></b>
         <b>ZONING</b>
-        <div class='zone'> </div>
+        <div class='zone' &emsp; &nbsp; class='mxfar'> </div>
         <div class='mxfar'> </div>
         <div class='sdist' style="margin-bottom: 25px"> </div>
         <b>EXISTING CONDITIONS</b>

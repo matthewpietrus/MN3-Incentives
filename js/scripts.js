@@ -8,9 +8,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkd
 
   var map = new mapboxgl.Map({
     container: 'mapcontainer', // container ID
-    style: 'mapbox://styles/mapbox/dark-v9', // style URL
+    style: 'mapbox://styles/mapbox/light-v10', // style URL
     center: [-73.983780,40.721], // starting position [lng, lat]
-    zoom: 13.85, // starting zoom
+    zoom: 13.75, // starting zoom
     pitch: 3,
 });
 
@@ -21,6 +21,7 @@ map.addControl(
     mapboxgl: mapboxgl
   })
 );
+
 
 //add hover layer//
 map.on('style.load', function () {
@@ -41,21 +42,21 @@ map.on('style.load', function () {
           ['linear'],
           ['get', 'likelihood'],
           -0.9,
-          '#edf8fb',
+          '#45caff',
           0,
-          '#b3cde3',
+          '#7DDAFF',
           0.05,
-          '#8c96c6',
+          '#BDECFF',
           0.075,
-          '#8856a7',
+          '#FFFFFF',
           0.1,
-          '#810f7c',
+          '#ff1b6b',
           0.4,
-          '#ff0000',
+          '#A10038',
         ],
         'fill-opacity': 0.70
       },
-    }, 'road-label-large');
+    }, 'waterway-label');
 })
 
 // when the user hovers over our nyc-cd layer make the mouse cursor a pointer
@@ -102,6 +103,7 @@ map.on('click', function(e) {
     var hoveredFeature = features[0]
 
     // pull out zoning information (zoning district, max far, built far, landuse) economic variables (median asking rent, condo sales), regulatory hurdles (landmark, historic district, number of rent stabilized units, special district, floodzone), tax incentives (brownfield, lihtc, 421(a))
+    var add = hoveredFeature.properties.Address
     var zone = hoveredFeature.properties._ZoneDist1
     var mxfar = hoveredFeature.properties.MaxFAR
     var sdist = hoveredFeature.properties._SPDist1
@@ -122,6 +124,7 @@ map.on('click', function(e) {
     var mtaz = hoveredFeature.properties.mtazoiyn
 
     // inject these values into the sidebar
+    $('.add').text(add)
     $('.zone').text(`Zone: ${(zone)}`)
     $('.mxfar').text(`Max FAR: ${(mxfar)}`)
     $('.sdist').text(`Special District: ${(sdist)}`)
