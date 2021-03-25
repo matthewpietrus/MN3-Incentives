@@ -1,4 +1,4 @@
-html, body, #sidebar, #propery-details, #mapcontainer, .main-container {
+html, body, #sidebar, #propery-details, #mapcontainer, .main-container, .tooltip {
   height: 100%;
   margin: 0px;
 }
@@ -28,7 +28,7 @@ body {
 
 #sidebar {
   background: #eeeeee;
-  width: 360px;
+  width: 400px;
   overflow: scroll;
 }
 
@@ -40,8 +40,8 @@ body {
 position: fixed;
 overflow: scroll;
   background: #eeeeee;
-  width: 360px;
-  left: -360px;
+  width: 400px;
+  left: -400px;
   height: 100%;
   transition: all 250ms linear;
 }
@@ -69,7 +69,6 @@ overflow: scroll;
   margin-left: 15px;
   padding; 15px;
   font-size: 14px;
-
 }
 
 h1 {
@@ -147,6 +146,7 @@ p {
 
 .tooltip {
   position: relative;
+  display: inline-block;
   border-bottom: 1px dotted black;
 }
 
@@ -158,12 +158,22 @@ p {
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-
-  /* Position the tooltip */
   position: absolute;
   z-index: 1;
+  top: -5px;
+  left: 110%;
 }
 
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
