@@ -28,7 +28,8 @@ body {
 
 #sidebar {
   background: lightgray;
-  width: 320px;
+  width: 360px;
+  overflow: scroll;
 }
 
 #mapcontainer {

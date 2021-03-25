@@ -21,7 +21,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title" id="aboutModalLabel">About the Data</h2>
+          <h2 class="modal-title" id="aboutModalLabel">About this Map</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -58,7 +58,7 @@
   <!-- add navigation bar -->
 <nav id='navbar' class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <h1><b>Development Potential</b></h1>
+    <h1><b><del> Can</del> Should I Build Here?</b></h1>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -66,7 +66,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <!-- Button trigger modal -->
-          <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About this Data<i class="fas fa-info-circle" ></i></a>
+          <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About this Map<i class="fas fa-info-circle" ></i></a>
         </li>
       </ul>
     </div>
@@ -91,7 +91,7 @@
           <div><span style="background-color: #8c96c6; margin-left: 10px"></span>Slightly Likely</div>
           <div><span style="background-color: #8856a7; margin-left: 10px"></span>Likely</div>
           <div><span style="background-color: #810f7c; margin-left: 10px"></span>Very Likely</div>
-          <div><span style="background-color: #ff0000; margin-left: 10px"></span>More than 200%</div>
+          <div><span style="background-color: #ff0000; margin-left: 10px"></span>Extremely Likely</div>
         </div>
       <h4>
         Source: Map PLUTO 2020 v8 - <a target="_blank"
@@ -99,6 +99,34 @@
       </h4>
 
       <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Toggle Sidebar</button>
+
+  <!-- This is where the map features should load on.click-->
+      <br></br>
+      <div class='info-container' style="margin-left: 10px">
+        <b>Click on a lot for more information</b>
+        <br></br>
+        <b>ZONING</b>
+        <div class='zone'> </div>
+        <div class='mxfar'> </div>
+        <div class='sdist'> </div>
+        <b>EXISTING CONDITIONS</b>
+        <div class='bltfar'> </div>
+        <div class='landuse'> </div>
+        <div class='tdr'> </div>
+        <b>MARKET CONDITIONS & TAX INCENTIVES</b>
+        <div class='rent'> </div>
+        <div class='tdr'> </div>
+        <div class='brwn'> </div>
+        <div class='oppzne'> </div>
+        <b>REGULATORY HURDLES</b>
+        <div class='lndmrk'> </div>
+        <div class='hdist'> </div>
+        <div class='rsunits'> </div>
+        <div class='fldzne'> </div>
+
+      </div>
+
+
     </div>
 
     <div id='property-details'>
@@ -108,6 +136,7 @@
         <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Close</button>
       </div>
     </div>
+
 
 
     <div id='mapcontainer'>MAP</div>

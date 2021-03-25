@@ -1,5 +1,7 @@
 function togglesidebar() {
   document.getElementById('property-details').classList.toggle('active');
+
+
 }
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkdzMzbnZ5NGh5dDM1eiJ9.wcy3gfH3AUsHi7Xzs58xPA';
@@ -8,7 +10,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkd
     container: 'mapcontainer', // container ID
     style: 'mapbox://styles/mapbox/dark-v9', // style URL
     center: [-73.984880,40.719789], // starting position [lng, lat]
-    zoom: 13.5, // starting zoom
+    zoom: 14, // starting zoom
     pitch: 3,
 });
 
@@ -20,6 +22,7 @@ map.addControl(
   })
 );
 
+//add hover layer//
 map.on('style.load', function () {
   //add geojson source, this can be pulled from mapboxgl//
   map.addSource('mncd3var', {
@@ -54,6 +57,15 @@ map.on('style.load', function () {
       },
     });
 })
+
+// when the user hovers over our nyc-cd layer make the mouse cursor a pointer
+map.on('mouseenter', 'mncd3-fill', () => {
+  map.getCanvas().style.cursor = 'pointer'
+})
+map.on('mouseleave', 'mncd3-fill', () => {
+  map.getCanvas().style.cursor = ''
+})
+
 // Create a popup, but don't add it to the map yet.
 var popup = new mapboxgl.Popup({
 closeButton: false,
@@ -71,13 +83,61 @@ map.on('mousemove', function (e) {
     // based on the feature found.
     var feature = features[0]
     var location = feature.properties.Address
-    var perbuilt = feature.properties.likelihood*100
 
-    popup.setLngLat(e.lngLat).setHTML(perbuilt).addTo(map);
+    popup.setLngLat(e.lngLat).setHTML(location).addTo(map);
   }
   else {
     popup.remove();
   }
 })
 
-//Display property details on feature click, move sidebar.
+map.on('click', function(e) {
+  // query for the features under the mouse, but only in our custom layer
+  var features = map.queryRenderedFeatures(e.point, {
+      layers: ['mncd3-fill'],
+  });
+
+  if (features.length > 0 ) {
+    // get the feature under the mouse pointer
+    var hoveredFeature = features[0]
+
+    // pull out zoning information (zoning district, max far, built far, landuse) economic variables (median asking rent, condo sales), regulatory hurdles (landmark, historic district, number of rent stabilized units, special district, floodzone), tax incentives (brownfield, lihtc, 421(a))
+    var zone = hoveredFeature.properties._ZoneDist1
+    var mxfar = hoveredFeature.properties.MaxFAR
+    var sdist = hoveredFeature.properties._SPDist1
+    var bltfar = hoveredFeature.properties.BltFARnew
+    var landuse = hoveredFeature.properties.LandUse
+    var units = hoveredFeature.properties.UnitsRes
+    var rsunits = hoveredFeature.properties.unitcount
+    var rent = hoveredFeature.properties.rents2015
+    var lndmrk = hoveredFeature.properties._Landmark
+    var hdist = hoveredFeature.properties._HistDist
+    var tdr = hoveredFeature.properties.blocktdr
+    var fldzne = hoveredFeature.properties.floodzone
+    var brwn = hoveredFeature.properties.brownfield
+    var oppzne = hoveredFeature.properties.OppZone
+
+    // inject these values into the sidebar
+    $('.zone').text(`Zone: ${(zone)}`)
+    $('.mxfar').text(`Max FAR: ${(mxfar)}`)
+    $('.sdist').text(`Max FAR: ${(sdist)}`)
+    $('.bltfar').text(`Built FAR: ${(bltfar)}`)
+    $('.landuse').text(`Land Use Code: ${(landuse)}`)
+    $('.units').text(`Units: ${(units)}`)
+    $('.rsunits').text(`Stabilized Units: ${(rsunits)}`)
+    $('.rent').text(`Area Asking Rent: $${(rent)}`)
+    $('.tdr').text(`Potential TDRs: ${(tdr)}`)
+    $('.lndmrk').text(`Landmark Status: ${(lndmrk)}`)
+    $('.hdist').text(`Historic District: ${(hdist)}`)
+    $('.fldzne').text(`Floodzone: ${(fldzne)}`)
+    $('.brwn').text(`Brownfield: ${(brwn)}`)
+    $('.oppzne').text(`Opportunity Zone: ${(oppzne)}`)
+
+
+
+
+    // set this lot's polygon feature as the data for the highlight source
+    map.getSource('highlight-feature').setData(hoveredFeature.geometry);
+  }
+
+})
