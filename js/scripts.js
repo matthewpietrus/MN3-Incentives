@@ -10,7 +10,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkd
     container: 'mapcontainer', // container ID
     style: 'mapbox://styles/mapbox/light-v10', // style URL
     center: [-73.983780,40.721], // starting position [lng, lat]
-    zoom: 13.75, // starting zoom
+    zoom: 13.6, // starting zoom
     pitch: 3,
 });
 
