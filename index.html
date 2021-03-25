@@ -7,6 +7,7 @@
   <title>MN CD3</title>
   <!-- Bootstrap styling -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css">
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
@@ -98,40 +99,34 @@
         href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" >NYC Department of City Planning.</a>
       </h4>
 
-      <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Toggle Sidebar</button>
+      <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Lot Info</button>
 
   <!-- This is where the map features should load on.click-->
-      <br></br>
-      <div class='info-container' style="margin-left: 10px">
-        <b>Click on a lot for more information</b>
-        <br></br>
-        <b>ZONING</b>
-        <div class='zone'> </div>
-        <div class='mxfar'> </div>
-        <div class='sdist'> </div>
-        <b>EXISTING CONDITIONS</b>
-        <div class='bltfar'> </div>
-        <div class='landuse'> </div>
-        <div class='tdr'> </div>
-        <b>MARKET CONDITIONS & TAX INCENTIVES</b>
-        <div class='rent'> </div>
-        <div class='tdr'> </div>
-        <div class='brwn'> </div>
-        <div class='oppzne'> </div>
-        <b>REGULATORY HURDLES</b>
-        <div class='lndmrk'> </div>
-        <div class='hdist'> </div>
-        <div class='rsunits'> </div>
-        <div class='fldzne'> </div>
-
-      </div>
-
 
     </div>
 
     <div id='property-details'>
-      <h1>PROPERTY DETAILS</h1>
-      <p>This is a test of information test tes tes asldkjf asdflkj </p>
+      <div class='info-container' style="margin-left: 10px">
+        <h2>Click on a lot to learn more</h2>
+        <b>ZONING</b>
+        <div class='zone'> </div>
+        <div class='mxfar'> </div>
+        <div class='sdist' style="margin-bottom: 25px"> </div>
+        <b>EXISTING CONDITIONS</b>
+        <div class='bltfar'> </div>
+        <div class='landuse'> </div>
+        <div class='tdr' style="margin-bottom: 25px"> </div>
+        <b>MARKET CONDITIONS & TAX INCENTIVES</b>
+        <div class='rent'> </div>
+        <div class='tdr'> </div>
+        <div class='brwn'> </div>
+        <div class='oppzne' style="margin-bottom: 25px"> </div>
+        <b>REGULATORY HURDLES</b>
+        <div class='lndmrk'> </div>
+        <div class='hdist'> </div>
+        <div class='rsunits'> </div>
+        <div class='fldzne' style="margin-bottom: 25px"> </div>
+      </div>
       <div class="sidebar-footer">
         <button type="button" onclick='togglesidebar()' style="margin-left: 10px">Close</button>
       </div>

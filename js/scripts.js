@@ -14,7 +14,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkd
     pitch: 3,
 });
 
-//add mapbox geocoder//
+// add the mapbox geocoder control
 map.addControl(
   new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -120,7 +120,7 @@ map.on('click', function(e) {
     // inject these values into the sidebar
     $('.zone').text(`Zone: ${(zone)}`)
     $('.mxfar').text(`Max FAR: ${(mxfar)}`)
-    $('.sdist').text(`Max FAR: ${(sdist)}`)
+    $('.sdist').text(`Special District: ${(sdist)}`)
     $('.bltfar').text(`Built FAR: ${(bltfar)}`)
     $('.landuse').text(`Land Use Code: ${(landuse)}`)
     $('.units').text(`Units: ${(units)}`)
