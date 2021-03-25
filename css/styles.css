@@ -50,25 +50,37 @@ overflow: scroll;
   left:0px;
 }
 
+.info-container {
+  font-family: "math", sans-serif;
+  font-weight: lighter;
+  margin-left: 15px;
+  margin-top: 15px;
+  padding; 15px;
+  font-size: 16px;
+
+}
+
 h1 {
-  font-family: sans-serif;
+  font-family: "Gill Sans", sans-serif;
   font-size: 34px;
   font-color: white;
   padding: 10px;
-  margin: 0px;
+  margin: auto;
+  margin-left: 10px;
 
 }
 
 h2 {
-  font-family: sans-serif;
+  font-family: "math", sans-serif;
   font-size: 20px;
   font-color: #636363;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-left: 10px;
+  font
 }
 
 h3 {
-  font-family: sans-serif;
+  font-family: "math", sans-serif;
   font-size: 14px;
   font-color: #636363;
   padding-left: 10px;
@@ -82,8 +94,9 @@ h4 {
 }
 
 p {
-  font-family: sans-serif;
-  font-size: 15px;
+  font-family: "math",sans-serif;
+  font-size: 14px;
+  font-weight: lighter;
   font-color: #636363;
   padding: 10px;
 }
@@ -120,7 +133,7 @@ font-size: 14px;
   width: 100%;
   justify-content: space-evenly;
   margin-bottom: 15px;
-  font-weight:bold;
+  font-weight:400;
   font-size: 14px;
 }
 
@@ -130,6 +143,7 @@ font-size: 14px;
 }
 
 .legend-head {
+  font-family: "math", sans-serif;
   text-align: center;
   font-size: 16px;
 }
