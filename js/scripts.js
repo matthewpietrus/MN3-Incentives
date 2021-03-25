@@ -9,8 +9,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGhld3BpZXRydXMiLCJhIjoiY2oya21sNnFtMDBkd
   var map = new mapboxgl.Map({
     container: 'mapcontainer', // container ID
     style: 'mapbox://styles/mapbox/dark-v9', // style URL
-    center: [-73.984880,40.719789], // starting position [lng, lat]
-    zoom: 14, // starting zoom
+    center: [-73.983780,40.721], // starting position [lng, lat]
+    zoom: 13.85, // starting zoom
     pitch: 3,
 });
 
@@ -55,7 +55,7 @@ map.on('style.load', function () {
         ],
         'fill-opacity': 0.70
       },
-    }, 'waterway-label');
+    }, 'road-label-large');
 })
 
 // when the user hovers over our nyc-cd layer make the mouse cursor a pointer
