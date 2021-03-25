@@ -113,9 +113,13 @@ map.on('click', function(e) {
     var lndmrk = hoveredFeature.properties._Landmark
     var hdist = hoveredFeature.properties._HistDist
     var tdr = hoveredFeature.properties.blocktdr
-    var fldzne = hoveredFeature.properties.floodzone
-    var brwn = hoveredFeature.properties.brownfield
-    var oppzne = hoveredFeature.properties.OppZone
+    var fldzne = hoveredFeature.properties.firms
+    var brwn = hoveredFeature.properties.brwnyn
+    var oppzne = hoveredFeature.properties.oppzneyn
+    var qct = hoveredFeature.properties.lihtc
+    var vih = hoveredFeature.properties.vihyn
+    var freshtax = hoveredFeature.properties.fresh
+    var mtaz = hoveredFeature.properties.mtazoiyn
 
     // inject these values into the sidebar
     $('.zone').text(`Zone: ${(zone)}`)
@@ -132,6 +136,10 @@ map.on('click', function(e) {
     $('.fldzne').text(`Floodzone: ${(fldzne)}`)
     $('.brwn').text(`Brownfield: ${(brwn)}`)
     $('.oppzne').text(`Opportunity Zone: ${(oppzne)}`)
+    $('.qct').text(`LIHTC: ${(qct)}`)
+    $('.vih').text(`Inclusionary Housing: ${(vih)}`)
+    $('.freshtax').text(`FRESH: ${(freshtax)}`)
+    $('.mtaz').text(`MTA Zone of Influence: ${(mtaz)}`)
 
 
 
